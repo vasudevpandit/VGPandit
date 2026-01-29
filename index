@@ -1,42 +1,265 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<header>
-  <nav>
-    <strong>V.G. Pandit – 100 Years</strong>
-    <div>
-      <a href="index.html">Home</a>
-      <a href="about.html">About Him</a>
-      <a href="values.html">His Values</a>
-      <a href="journey.html">Life Journey</a>
-      <a href="ceremony.html">Ceremony</a>
-      <a href="gallery.html">Gallery</a>
-      <a href="wishes.html">Wishes</a>
-    </div>
-  </nav>
-</header>
-<title>Centenary Celebration | V.G. Pandit</title>
-<link rel="stylesheet" href="assets/css/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shri Vasudev Ganapatrao Pandit | Centenary Celebration</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Georgia, serif;
+  background: #f9f7f3;
+  color: #3b2f2f;
+  line-height: 1.7;
+}
+section {
+  padding: 60px 20px;
+}
+.container {
+  max-width: 1200px;
+  margin: auto;
+}
+.center { text-align: center; }
+h1,h2,h3 { margin-bottom: 15px; }
+
+/* HERO */
+.hero {
+  background: linear-gradient(rgba(0,0,0,0.45),rgba(0,0,0,0.45)),
+  url("hero.jpg") center/cover no-repeat;
+  color: white;
+  padding: 120px 20px;
+}
+.hero h1 { font-size: 48px; }
+
+/* LANGUAGE TOGGLE */
+.toggle {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  background: white;
+  border-radius: 30px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  padding: 5px;
+  z-index: 999;
+}
+.toggle button {
+  border: none;
+  padding: 8px 15px;
+  border-radius: 30px;
+  cursor: pointer;
+  background: transparent;
+}
+.toggle button.active {
+  background: #3b2f2f;
+  color: white;
+}
+
+/* ABOUT */
+.profile-img {
+  width: 260px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
+
+/* TIMELINE */
+.timeline {
+  border-left: 4px solid #c8b89a;
+  padding-left: 30px;
+}
+.timeline-item {
+  margin-bottom: 30px;
+}
+.timeline-item span {
+  font-weight: bold;
+  color: #8a6d3b;
+}
+
+/* GALLERY */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+  gap: 15px;
+}
+.gallery-grid img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform .3s;
+}
+.gallery-grid img:hover { transform: scale(1.05); }
+
+/* LIGHTBOX */
+.lightbox {
+  display: none;
+  position: fixed;
+  top:0; left:0;
+  width:100%; height:100%;
+  background: rgba(0,0,0,0.85);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+.lightbox img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 10px;
+}
+
+/* VIDEO */
+iframe {
+  width: 100%;
+  height: 450px;
+  border-radius: 12px;
+  border: none;
+}
+
+/* WISHES */
+form {
+  max-width: 500px;
+  margin: auto;
+}
+input, textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+button {
+  background: #3b2f2f;
+  color: white;
+  border: none;
+  padding: 12px;
+  width: 100%;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* MUSIC */
+audio {
+  position: fixed;
+  bottom: 15px;
+  left: 15px;
+}
+
+/* FOOTER */
+footer {
+  background: #3b2f2f;
+  color: white;
+  padding: 40px;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+.hero h1 { font-size: 34px; }
+iframe { height: 250px; }
+}
+</style>
 </head>
+
 <body>
 
-<!-- NAVIGATION -->
-<!-- (paste nav here) -->
+<!-- LANGUAGE TOGGLE -->
+<div class="toggle">
+  <button class="active" onclick="setLang('mr')">मराठी</button>
+  <button onclick="setLang('en')">English</button>
+</div>
 
-<section>
-  <div class="container card">
-    <h1 class="gold">🌸 Centenary Celebration 🌸</h1>
-    <p>
-      Honouring <strong>Shri Vasudev Ganapatrao Pandit</strong> —
-      a century of wisdom, values, and blessings that shaped generations.
-    </p>
-    <img src="assets/images/ajoba.jpg" class="responsive">
-  </div>
+<!-- HERO -->
+<section class="hero center">
+<h1 class="mr">🌸 शताब्दीचा मंगल सोहळा 🌸</h1>
+<h1 class="en" style="display:none;">🌸 Centenary Celebration 🌸</h1>
+<p class="mr">शंभर वर्षांचा प्रेरणादायी जीवनप्रवास</p>
+<p class="en" style="display:none;">Celebrating 100 Years of Life & Legacy</p>
 </section>
 
-<footer>
-  With love, respect & gratitude ❤️
+<!-- ABOUT -->
+<section class="center">
+<img src="ajoba.jpg" class="profile-img">
+<h2 class="mr">आदरणीय श्री. वासुदेव गणपतराव पंडित</h2>
+<h2 class="en" style="display:none;">Shri Vasudev Ganapatrao Pandit</h2>
+<p class="mr">प्रेम, संस्कार आणि शहाणपणाचा शंभर वर्षांचा ठेवा.</p>
+<p class="en" style="display:none;">A century of wisdom, values, and blessings.</p>
+</section>
+
+<!-- TIMELINE -->
+<section>
+<div class="container">
+<h2 class="center">🕰️ Life Journey</h2>
+<div class="timeline">
+<div class="timeline-item"><span>1926</span> – Birth</div>
+<div class="timeline-item"><span>1950</span> – Family & Values</div>
+<div class="timeline-item"><span>1975</span> – Guiding Generations</div>
+<div class="timeline-item"><span>2000</span> – Legacy Continues</div>
+<div class="timeline-item"><span>2026</span> – 100 Glorious Years</div>
+</div>
+</div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery">
+<div class="container center">
+<h2>📸 Memories</h2>
+<div class="gallery-grid">
+<img src="gallery/1.jpg" onclick="openLightbox(this.src)">
+<img src="gallery/2.jpg" onclick="openLightbox(this.src)">
+<img src="gallery/3.jpg" onclick="openLightbox(this.src)">
+<img src="gallery/4.jpg" onclick="openLightbox(this.src)">
+</div>
+</div>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" onclick="this.style.display='none'">
+<img id="lightboxImg">
+</div>
+
+<!-- VIDEO -->
+<section class="center">
+<h2>🎥 Live Celebration</h2>
+<iframe src="https://www.youtube.com/embed/YOUTUBE_VIDEO_ID" allowfullscreen></iframe>
+</section>
+
+<!-- WISHES -->
+<section class="center">
+<h2>💌 Send Your Wishes</h2>
+<form onsubmit="saveWish(event)">
+<input placeholder="Your Name" required>
+<textarea placeholder="Your Wishes" required></textarea>
+<button>Send Wishes</button>
+</form>
+<p id="wishMsg"></p>
+</section>
+
+<!-- MUSIC -->
+<audio controls loop>
+<source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<!-- FOOTER -->
+<footer class="center">
+<p>With Love & Gratitude ❤️</p>
 </footer>
+
+<script>
+function openLightbox(src){
+document.getElementById("lightboxImg").src = src;
+document.querySelector(".lightbox").style.display="flex";
+}
+function setLang(lang){
+document.querySelectorAll(".mr").forEach(e=>e.style.display=lang=="mr"?"block":"none");
+document.querySelectorAll(".en").forEach(e=>e.style.display=lang=="en"?"block":"none");
+document.querySelectorAll(".toggle button").forEach(b=>b.classList.remove("active"));
+event.target.classList.add("active");
+}
+function saveWish(e){
+e.preventDefault();
+document.getElementById("wishMsg").innerText="🙏 Thank you for your blessings!";
+}
+</script>
 
 </body>
 </html>
