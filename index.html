@@ -13,20 +13,15 @@ body {
   color: #3b2f2f;
   line-height: 1.7;
 }
-section {
-  padding: 60px 20px;
-}
-.container {
-  max-width: 1200px;
-  margin: auto;
-}
+section { padding: 60px 20px; }
+.container { max-width: 1200px; margin: auto; }
 .center { text-align: center; }
 h1,h2,h3 { margin-bottom: 15px; }
 
 /* HERO */
 .hero {
   background: linear-gradient(rgba(0,0,0,0.45),rgba(0,0,0,0.45)),
-  url("hero.jpg") center/cover no-repeat;
+  url("gallery/17.jpeg") center/cover no-repeat;
   color: white;
   padding: 120px 20px;
 }
@@ -95,8 +90,7 @@ h1,h2,h3 { margin-bottom: 15px; }
 .lightbox {
   display: none;
   position: fixed;
-  top:0; left:0;
-  width:100%; height:100%;
+  inset: 0;
   background: rgba(0,0,0,0.85);
   justify-content: center;
   align-items: center;
@@ -164,8 +158,8 @@ iframe { height: 250px; }
 
 <!-- LANGUAGE TOGGLE -->
 <div class="toggle">
-  <button class="active" onclick="setLang('mr')">मराठी</button>
-  <button onclick="setLang('en')">English</button>
+  <button class="active" onclick="setLang('mr', event)">मराठी</button>
+  <button onclick="setLang('en', event)">English</button>
 </div>
 
 <!-- HERO -->
@@ -203,12 +197,7 @@ iframe { height: 250px; }
 <section class="gallery">
 <div class="container center">
 <h2>📸 Memories</h2>
-<div class="gallery-grid">
-<img src="gallery/1.jpg" onclick="openLightbox(this.src)">
-<img src="gallery/2.jpg" onclick="openLightbox(this.src)">
-<img src="gallery/3.jpg" onclick="openLightbox(this.src)">
-<img src="gallery/4.jpg" onclick="openLightbox(this.src)">
-</div>
+<div class="gallery-grid" id="galleryGrid"></div>
 </div>
 </section>
 
@@ -246,18 +235,32 @@ iframe { height: 250px; }
 
 <script>
 function openLightbox(src){
-document.getElementById("lightboxImg").src = src;
-document.querySelector(".lightbox").style.display="flex";
+  document.getElementById("lightboxImg").src = src;
+  document.querySelector(".lightbox").style.display = "flex";
 }
-function setLang(lang){
-document.querySelectorAll(".mr").forEach(e=>e.style.display=lang=="mr"?"block":"none");
-document.querySelectorAll(".en").forEach(e=>e.style.display=lang=="en"?"block":"none");
-document.querySelectorAll(".toggle button").forEach(b=>b.classList.remove("active"));
-event.target.classList.add("active");
+
+function setLang(lang, event){
+  document.querySelectorAll(".mr").forEach(e=>e.style.display=lang==="mr"?"block":"none");
+  document.querySelectorAll(".en").forEach(e=>e.style.display=lang==="en"?"block":"none");
+  document.querySelectorAll(".toggle button").forEach(b=>b.classList.remove("active"));
+  event.target.classList.add("active");
 }
+
 function saveWish(e){
-e.preventDefault();
-document.getElementById("wishMsg").innerText="🙏 Thank you for your blessings!";
+  e.preventDefault();
+  document.getElementById("wishMsg").innerText="🙏 Thank you for your blessings!";
+}
+
+/* LOAD 18 IMAGES, SKIP 17.jpeg */
+const galleryGrid = document.getElementById("galleryGrid");
+
+for (let i = 1; i <= 18; i++) {
+  if (i === 17) continue;
+  const img = document.createElement("img");
+  img.src = `gallery/${i}.jpeg`;
+  img.loading = "lazy";
+  img.onclick = () => openLightbox(img.src);
+  galleryGrid.appendChild(img);
 }
 </script>
 
